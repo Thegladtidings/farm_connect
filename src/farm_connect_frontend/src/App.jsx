@@ -1,31 +1,30 @@
-import { useState } from 'react';
-import { farm_connect_backend } from 'declarations/farm_connect_backend';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import HomePage from "./pages/HomePage.jsx"
+import RegisterPage from "./pages/RegisterPage.jsx"
+import LoginPage from "./pages/LoginPage.jsx"
+import MarketplacePage from "./pages/MarketplacePage.jsx"
+import ProductDescription from "./pages/ProductDescription.jsx"
+import "./App.css"
+import Header from "./components/Header.jsx"
+import Footer from "./components/Footer.jsx"
 
 function App() {
-  const [greeting, setGreeting] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    farm_connect_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
-
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
-  );
+    <Router>
+      <div className="App">
+        <Header/>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/marketplace" element={<MarketplacePage />} />
+          <Route path="/product/:id" element={<ProductDescription />} />
+
+        </Routes>
+        <Footer/>
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App

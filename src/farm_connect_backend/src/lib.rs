@@ -1,4 +1,8 @@
-#[ic_cdk::query]
-fn greet(name: String) -> String {
-    format!("Hello, {}!", name)
-}
+mod models;
+mod storage;
+mod api;
+mod types;
+mod register;
+
+pub use register::register_user;
+

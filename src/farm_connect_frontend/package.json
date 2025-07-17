@@ -6,16 +6,18 @@
   "scripts": {
     "setup": "npm i && dfx canister create farm_connect_backend && dfx generate farm_connect_backend && dfx deploy",
     "start": "vite --port 3000",
-    "prebuild": "dfx generate",
+"prebuild": "dfx generate internet_identity",
     "build": "tsc && vite build",
     "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\""
   },
   "dependencies": {
+    "@dfinity/agent": "^2.4.1",
+    "@dfinity/auth-client": "^2.4.1",
+    "@dfinity/candid": "^2.4.1",
+    "@dfinity/principal": "^2.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@dfinity/agent": "^2.1.3",
-    "@dfinity/candid": "^2.1.3",
-    "@dfinity/principal": "^2.1.3"
+    "react-router-dom": "^7.6.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
